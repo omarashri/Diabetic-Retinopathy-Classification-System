@@ -1,0 +1,94 @@
+{% extends 'myapp/NewBase.html'%}
+{% load staticfiles %}
+{% block body %}
+<head>
+<link rel="stylesheet" href="{% static 'reg style.css' %}">
+</head>
+
+
+<body>
+<div class="modal-dialog text-center" id="modalLRForm1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="col-auto main-section">
+        <div class="modal-content">
+
+            <div class="col-12 user-img">
+                <img src="{% static 'img/reg.jpg' %}">
+                <h3>Registeration Info</h3>
+            </div>
+
+
+            <form class="col-12" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <span class="inline">
+                        <label style="text-align: left;float: left;color: red">*</label>
+                        <label style="text-align: left;float: left; color: white">Your Username:</label>
+                        </span>
+                    <input type="text" name="username" class="form-control" placeholder="Enter Username">
+                    <p style="color: whitesmoke">150 characters or fewer. Letters, digits and @/./+/-/_ only.</p>
+                </div>
+                <div class="form-group">
+                    <span class="inline">
+                        <label style="text-align: left;float: left;color: red">*</label>
+                    <label style="text-align: left;float: left; color: white">Your Password:</label>
+                    </span>
+
+                    <input type="password" name="password1" class="form-control" placeholder="Enter Password">
+                    <p style="color: whitesmoke">Your password can't be too similar to your other personal information.<br>
+                            Your password must contain at least 8 characters.<br>
+                            Your password can't be a commonly used password.<br>
+                            Your password can't be entirely numeric.</p>
+                </div>
+                <div class="form-group">
+                    <span class="inline">
+                        <label style="text-align: left;float: left;color: red">*</label>
+                    <label style="text-align: left;float: left; color: white">Confirm Password:</label>
+                    </span>
+                    <input type="password" name="password2" class="form-control" placeholder="Password Confirmation" >
+                </div>
+                <div class="form-group">
+                    <span class="inline">
+                        <label style="text-align: left;float: left;color: red">*</label>
+                    <label style="text-align: left;float: left; color: white">Your First Name:</label>
+                    </span>
+                    <input type="text" name="first_name" class="form-control" placeholder="Enter First Name">
+                </div>
+                <div class="form-group">
+                    <span class="inline">
+                        <label style="text-align: left;float: left;color: red">*</label>
+                    <label style="text-align: left;float: left; color: white">Your Last Name:</label>
+                    </span>
+                    <input type="text" name="last_name" class="form-control" placeholder="Enter Last Name">
+                </div>
+
+                <div class="form-group">
+                    <label style="text-align: left;float: left; color: white">Your Mobile Number:</label>
+                    <input type="text" name="mobile_number" class="form-control" placeholder="Enter Mobile Number">
+                </div>
+                <div class="form-group">
+                    <label style="text-align: left;float: left; color: white">Your Location:</label>
+                    <input type="text" name="address" class="form-control" placeholder="eg. Cairo,Egypt">
+                </div>
+                <div class="form-group">
+                    <label style="text-align: left;float: left; color: white">Your E-mail Address:</label>
+                    <input type="text" name="email" class="form-control" placeholder="example@example.com">
+                </div>
+                {% csrf_token %}
+                <button type="submit" class="btn"><i class="fas fa-sign-in-alt"></i>Register</button>
+            </form>
+
+            <div class="col-12 already">
+                <a href="{% url 'myapp:Home' %}">Already have an Account</a>
+            </div>
+
+            
+        </div><!---- end of modal content-->
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/release/v5.0.7/js/all.js"></script>
+<script src="https://use.fontawesome.com/release/v5.0.8/css/solid.css"></script>
+</body>
+{% endblock %}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+  <meta charset="utf-8">
+  <title>Diabetic Retinopathy Classification</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+  <link href="{% static 'NewDesign/img/logo.png' %}" rel="icon">
+  <link href="{% static 'NewDesign/img/logo.png' %}" rel="apple-touch-icon">
+
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+    <link href="{% static 'NewDesign/lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+    <link href="{% static 'NewDesign/lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'NewDesign/lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'NewDesign/lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'NewDesign/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'NewDesign/lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+
+
+  <!-- Main Stylesheet File -->
+  <link href="{% static 'NewDesign/BaseStyle.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+    Theme Name: BizPage
+    Theme URL: https://bootstrapmade.com/bizpage-bootstrap-business-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= -->
+</head>
+
+<body>
+
+  <!--==========================
+    Header
+  ============================-->
+  <header id="header">
+    <div class="container-fluid">
+
+      <div id="logo" class="pull-left">
+        <h1><a href="{% url 'myapp:Home' %}" class="scrollto">DR Classification</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a>-->
+      </div>
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li class="menu-active"><a href="{% url 'myapp:Home' %}">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+            {% if user.username == ""  %}
+		  <li><a href="{% url 'myapp:Login' %}">LOGIN</a></li>
+		  <li><a href="{% url 'myapp:registration' %}">Register</a></li>
+            {% else%}
+                <li><a href="{% url 'myapp:UserProfile' user %}">Welcome, {{ user.first_name }} {{ user.last_name }}</a></li>
+                <li><a href="{% url 'myapp:logout' %}">Logout</a></li>
+            {% endif %}
+        </ul>
+      </nav><!-- #nav-menu-container -->
+    </div>
+  </header><!-- #header -->
+
+
+
+
+
+{% block body %}
+{% endblock %}
+
+
+ <!--==========================
+    Footer
+  ============================-->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-info">
+            <h3>DR Classification System</h3>
+            <p>A system that helps you to check your retina easily..</p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#">Home</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#">About us</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h4>Contact Us</h4>
+            <p>
+              El-Khalyfa El-Mamoun Street Abbasya <br>
+              Cairo <br>
+              Egypt <br>
+              <strong>Phone:</strong> 01113294354<br>
+              <strong>Email:</strong> graduationprojectdr@gmail.com<br>
+            </p>
+
+            <div class="social-links">
+              <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+              <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+              <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+              <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+            </div>
+
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+       Copyright <strong>FCIS-ASU</strong>. All Rights Reserved
+      </div>
+
+    </div>
+  </footer><!-- #footer -->
+
+
+
+
+
+<!-- JavaScript Libraries -->
+  <script src="{% static 'NewDesign/lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'NewDesign/lib/jquery/jquery-migrate.min.js' %}"></script>
+  <script src="{% static 'NewDesign/lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'NewDesign/lib/easing/easing.min.js' %}"></script>
+  <script src="{% static 'NewDesign/lib/superfish/hoverIntent.js' %}"></script>
+  <script src="{% static 'NewDesign/lib/superfish/superfish.min.js' %}"></script>
+  <script src="{% static 'NewDesign/lib/wow/wow.min.js' %}"></script>
+  <script src="{% static 'NewDesign/lib/waypoints/waypoints.min.js' %}"></script>
+  <script src="{% static 'NewDesign/lib/counterup/counterup.min.js' %}"></script>
+  <script src="{% static 'NewDesign/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'NewDesign/lib/isotope/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'NewDesign/lib/lightbox/js/lightbox.min.js' %}"></script>
+  <script src="{% static 'NewDesign/lib/touchSwipe/jquery.touchSwipe.min.js' %}"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="{% static 'NewDesign/contactform/contactform.js' %}"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="{% static 'NewDesign/js/main.js' %}"></script>

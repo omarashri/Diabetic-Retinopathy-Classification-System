@@ -1,0 +1,131 @@
+{% extends 'myapp/NewBase.html'%}
+{% load staticfiles %}
+{% block body %}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link rel="stylesheet" href="{% static 'NewDesign/ProfileStyle.css' %}">
+<div class="container emp-profile" style=" background: rgba(255,255,255,0.9) !important; margin-top: 90px !important; padding-bottom: 3cm!important;">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <img src="{% static 'NewDesign/img/profilepicture.jpg' %}" alt=""/>
+                            <div class="file btn btn-lg btn-primary">
+                                Change Photo
+                                <input type="file" name="file"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="margin-top: 50px !important;">
+                        <div class="profile-head">
+                                    <h3>
+                                        {{ user.first_name }} {{ user.last_name }}
+                                    </h3>
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" >About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">History</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-work">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent"  >
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row" >
+                                            <div class="col-md-6">
+                                                <label>Username</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p style="color: #18d26e !important;">{{ user.username }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>First Name</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p style="color: #18d26e !important;">{{ user.first_name }}</p>
+                                            </div>
+                                        </div>
+                                         <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Last Name</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p style="color: #18d26e !important;">{{ user.last_name }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Email</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p style="color: #18d26e !important;">{{ user.email }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Phone</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p style="color: #18d26e !important;">{{ user.mobile_number }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Health Condition</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                {% if user.health_condition == 'Healthy' %}
+                                                    <div class="col-md-6">
+                                                    <p style="text-align:left;font-size: medium; color: white;"><span class="badge badge-success">{{ user.health_condition}}</span>
+                                                    </p>
+                                                    </div>
+                                                {% elif user.health_condition == 'Diseased' %}
+                                                    <div class="col-md-6">
+                                                    <p style="text-align:left;font-size: medium; color: white;"><span class="badge badge-danger">{{ user.health_condition}}</span>
+                                                    </p>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+                        {% for image in image_list %}
+                            <ul>
+                            <div class="gallery" style="display: inline-block; vertical-align: top;">
+                                <span class="inline">
+                                    <a target="_blank">
+                                  <img src={{ image.image.url }} width="150" height="100" style="">
+                                </a>
+                                <div class="desc" style="color: black;display:inline-block; ">Result: {{image.stage }}<br>
+                                    <small> <strong>{{ image.date }}</strong></small>
+                                </div>
+                                    </span>
+
+                            </div>
+                            </ul>
+
+                        {% endfor %}
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+{% endblock %}

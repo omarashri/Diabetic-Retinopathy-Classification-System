@@ -1,0 +1,50 @@
+{% extends 'myapp/NewBase.html' %}
+{% load staticfiles %}
+
+<head>
+
+</head>
+<body>
+{% block body %}
+    <link rel="stylesheet" href="{% static 'NewDesign/ResultStyle.css' %}">
+<div class="container col-md-6 text-center" id="modalLRForm1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 100px !important; padding-bottom: 30px !important; ">
+    <div class="col-auto main-section">
+            <!--Content-->
+            <div class="modal-content">
+
+                                <!--Body-->
+
+
+                                    <form class="container-fluid" id="MyForm1" action="" method="POST">
+                                        <img src="{{ Image.image.url }}" style="width:350px !important; height:250px !important; margin-bottom: 20px; margin-top: 20px;">
+                                    <h1 style="color:teal"><strong>Stage {{ Stage }}</strong></h1>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                {% if Stage == 1 %}
+                                                <p style="color:#18d26e; font-size: 1.5rem;">You have healthy retina ^_^</p>
+                                                    <div class="col-12 already">
+                                                        <a target="_blank" href="https://www.diabetes.org.uk/guide-to-diabetes/complications/retinopathy/steps-you-can-take-to-avoid-retinopathy" style="color: royalblue"><u>Tips to maintain healthy eyes</u></a>
+                                                    </div>
+                                                {% elif Stage == 2 %}
+                                                     <p style="color:red; font-size: 1.5rem;">Unfortunately, You're diseased :(</p>
+                                                <p style="color:#18d26e; font-size: 1.5rem;">This is the earliest stage of diabetic retinopathy, and it’s characterized by balloon-like swelling in the retina’s blood vessels. These are called microaneurysms, and these vessels can leak into the eye.</p>
+                                                {% elif Stage == 3 %}
+                                                    <p style="color:red; font-size: 1.5rem;">Unfortunately, You're diseased :(</p>
+                                                <p style="color:#18d26e; font-size: 1.5rem;">During this stage, the blood vessels nourishing the retina swell and may even become blocked. This can contribute to diabetic macular edema (DME) which is a build-up of fluid in the macula region of the retina.</p>
+                                                {% elif Stage == 4 %}
+                                                    <p style="color:red; font-size: 1.5rem;">Unfortunately, You're diseased :(</p>
+                                                <p style="color:#18d26e; font-size: 1.5rem;">At this stage, an increasing number of blood vessels nourishing the eye have become blocked. As a result, the retina is signaled to grow new blood vessels</p>
+                                                {% elif Stage == 5 %}
+                                                    <p style="color:red; font-size: 1.5rem;">Unfortunately, You're diseased :(</p>
+                                                <p style="color:#18d26e; font-size: 1.5rem;">This is the final stage of diabetic retinopathy. New blood vessels proliferate, growing inside the retina and into the vitreous gel, which is the fluid that fills the eye. Because these blood vessels are delicate, they may begin to leak and bleed. As a result, scar tissue may form, causing retinal detachment, the pulling away of the retina from underlying tissue. Retinal detachment may cause spotty vision, flashes of lights, or severe vision loss.</p>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </form>
+
+</div>
+            </div>
+    </div>
+</div>
+</body>
+{% endblock %}
